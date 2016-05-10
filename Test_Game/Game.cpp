@@ -36,5 +36,5 @@ void Game::Update(float dt)
 
 void Game::Render()
 {
-	renderer->DrawSprite(ResourceManager::GetTexture("smile"), Vector3(0, 0), Vector3(400, 200));
+	renderer->DrawSprite(ResourceManager::GetTexture("smile"), Vector3(400, 300), Vector3(400, 200));
 }
