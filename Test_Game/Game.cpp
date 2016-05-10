@@ -9,6 +9,11 @@ Game::~Game()
 
 }
 
+void Game::Init()
+{
+
+}
+
 void Game::ProccessInput(float dt)
 {
 

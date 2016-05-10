@@ -6,7 +6,7 @@ Shader &Shader::Use()
 	return *this;
 }
 
-void Shader::Compile(const char *vertSource, const char *fragSource, const char *geomSource = nullptr)
+void Shader::Compile(const char *vertSource, const char *fragSource, const char *geomSource)
 {
 	unsigned sVert, sFrag, sGeom;
 
@@ -42,55 +42,76 @@ void Shader::Compile(const char *vertSource, const char *fragSource, const char 
 		glDeleteShader(sGeom);
 }
 
-void Shader::SetFloat(const char *name, float value, bool useShader = false)
+void Shader::SetFloat(const char *name, float value, bool useShader)
 {
 	if (useShader)
 		this->Use();
 	glUniform1f(glGetUniformLocation(this->ID, name), value);
 }
 
-void Shader::SetInteger(const char *name, int value, bool useShader = false)
+void Shader::SetInteger(const char *name, int value, bool useShader)
 {
 	if (useShader)
 		this->Use();
 	glUniform1i(glGetUniformLocation(this->ID, name), value);
 }
 
-void Shader::SetVector2f(const char *name, float x, float y, bool useShader = false)
+void Shader::SetVector2f(const char *name, float x, float y, bool useShader)
 {
 	if (useShader)
 		this->Use();
 	glUniform2f(glGetUniformLocation(this->ID, name), x, y);
 }
 
-void Shader::SetVector3f(const char *name, float x, float y, float z, float useShader = false)
+void Shader::SetVector3f(const char *name, float x, float y, float z, float useShader)
 {
 	if (useShader)
 		this->Use();
 	glUniform3f(glGetUniformLocation(this->ID, name), x, y, z);
 }
 
-void Shader::SetVector3f(const char *name, const Vector3 &value, bool useShader = false)
+void Shader::SetVector3f(const char *name, const Vector3 &value, bool useShader)
 {
 	if (useShader)
 		this->Use();
 	glUniform3f(glGetUniformLocation(this->ID, name), value.X, value.Y, value.Z);
 }
 
-void Shader::SetVector4f(const char *name, float x, float y, float z, float w, bool useShader = false)
+void Shader::SetVector4f(const char *name, float x, float y, float z, float w, bool useShader)
 {
 	if (useShader)
 		this->Use();
 	glUniform4f(glGetUniformLocation(this->ID, name), x, y, z, w);
 }
 
-void Shader::SetMatrix4(const char *name, const Matrix4 &matrix, bool useShader = false)
+void Shader::SetMatrix4(const char *name, Matrix4 &matrix, bool useShader)
 {
-	float *data = matrix.GetMatrixData();
 	if (useShader)
 		this->Use();
 	glUniformMatrix4fv(glGetUniformLocation(this->ID, name), 1, true, matrix.GetMatrixData());
 }
 
-	private:
-		void checkCompileErrors(unsigned object, std::string type);
+void Shader::checkCompileErrors(unsigned object, std::string type)
+{
+	int success;
+	char infoLog[1024];
+	if (type != "PROGRAM")
+	{
+		glGetShaderiv(object, GL_COMPILE_STATUS, &success);
+		
+		if (!success)
+		{
+			glGetShaderInfoLog(object, 1024, NULL, infoLog);
+			throw(std::string("ERROR:: " + type + " Couldnt COMPILE! \n " + infoLog));
+		}
+	}
+	else
+	{
+		glGetProgramiv(object, GL_LINK_STATUS, &success);
+		if (!success)
+		{
+			glGetProgramInfoLog(object, 1024, NULL, infoLog);
+			throw(std::string("ERROR:: " + type + " Couldnt LINK! \n " + infoLog));
+		}
+	}
+}

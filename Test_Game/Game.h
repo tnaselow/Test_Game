@@ -14,6 +14,8 @@ class Game
 		bool		Keys[1024];
 		unsigned	Width, Height;
 
+		void Init();
+
 		Game(unsigned width, unsigned height);
 		~Game();
 
