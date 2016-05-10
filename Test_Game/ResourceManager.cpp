@@ -78,7 +78,11 @@ Shader ResourceManager::loadShaderFromFile(const char *vShaderFile, const char *
 
 	const char *vShaderCode = vertCode.c_str();
 	const char *fShaderCode = fragCode.c_str();
-	const char *gShaderCode = geomCode.c_str();
+	const char *gShaderCode;
+	if (gShaderfile == nullptr)
+		gShaderCode = nullptr;
+	else 
+		gShaderCode = geomCode.c_str();
 
 	Shader shader;
 	try
