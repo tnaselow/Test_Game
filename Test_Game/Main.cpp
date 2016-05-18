@@ -6,6 +6,7 @@
 #include "Game.h"
 #include "ResourceManager.h"
 #include "WindowGL.h"
+#include "Entity.h"
 
 void KeyCallback(GLFWwindow *window, int key, int scancode, int action, int mode);
 
@@ -27,7 +28,7 @@ int main(int num, char **args)
 
 	while (!glfwWindowShouldClose(window.windowHandle))
 	{
-		float currentTime = glfwGetTime();
+		float currentTime = static_cast<float>(glfwGetTime());
 		deltaTime = currentTime - lastFrame;
 		lastFrame = currentTime;
 		glfwPollEvents();

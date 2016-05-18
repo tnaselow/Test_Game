@@ -37,15 +37,25 @@ void Renderer::DrawSprite(Texture2D &texture, Vector3 position, Vector3 size, fl
 void Renderer::initRenderData()
 {
 	GLuint VBO;
+	//GLfloat vertices[] = {
+	//	// Pos      // Tex
+	//	-0.5f, -0.5f, 0.0f, 0.0f,
+	//	0.5f, -0.5f, 1.0f, 0.0f,
+	//	0.5f, 0.5f, 1.0f, 1.0f,
+
+	//	0.5f, 0.5f, 1.0f, 1.0f,
+	//	-0.5f, 0.5f, 0.0f, 1.0f,
+	//	-0.5f, -0.5f, 0.0f, 0.0f
+	//};
 	GLfloat vertices[] = {
 		// Pos      // Tex
-		-0.5f, -0.5f, 0.0f, 0.0f,
-		0.5f, -0.5f, 1.0f, 0.0f,
-		0.5f, 0.5f, 1.0f, 1.0f,
+		0.0f, 1.0f, 0.0f, 1.0f,
+		1.0f, 0.0f, 1.0f, 0.0f,
+		0.0f, 0.0f, 0.0f, 0.0f,
 
-		0.5f, 0.5f, 1.0f, 1.0f,
-		-0.5f, 0.5f, 0.0f, 1.0f,
-		-0.5f, -0.5f, 0.0f, 0.0f
+		0.0f, 1.0f, 0.0f, 1.0f,
+		1.0f, 1.0f, 1.0f, 1.0f,
+		1.0f, 0.0f, 1.0f, 0.0f
 	};
 
 	glGenVertexArrays(1, &this->quadVAO);
