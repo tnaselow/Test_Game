@@ -58,6 +58,7 @@ Component *Entity::AddComponent(ComponentType type)
 			break;
 		}
 		components[type]->Owner = this;
+		return components[type];
 	}
 	else
 		return nullptr;
@@ -65,7 +66,7 @@ Component *Entity::AddComponent(ComponentType type)
 
 void Entity::operator=(const Entity &entity)
 {
-	for (int i = 0; i < components.size(); i++)
+	for (unsigned i = 0; i < components.size(); i++)
 	{
 		if (entity.components[i] != nullptr)
 		{
