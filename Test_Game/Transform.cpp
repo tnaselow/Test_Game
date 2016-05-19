@@ -1,6 +1,10 @@
 #include "Transform.h"
 
 
+Component *Transform::clone()
+{
+	return new Transform(*this);
+}
 
 void Transform::SetPosition(Vector3 vec)
 {

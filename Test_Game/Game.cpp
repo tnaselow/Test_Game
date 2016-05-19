@@ -40,12 +40,12 @@ void Game::Init()
 	trans->SetPosition(Vector3(0, 0));
 	trans->SetScale(Vector3(100, 100));
 	Sprite *sprite = entity.AddComponent<Sprite>(SPRITE);
-	sprite->Texture = ResourceManager::GetTexture("block");
+	sprite->mTexture = ResourceManager::GetTexture("block");
 
 	gEntities.push_back(entity);
 
 	trans->SetPosition(Vector3(300, 100));
-	sprite->Texture = ResourceManager::GetTexture("block_solid");
+	sprite->mTexture = ResourceManager::GetTexture("block_solid");
 
 	gEntities.push_back(entity);
 }

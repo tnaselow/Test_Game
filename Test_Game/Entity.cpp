@@ -1,20 +1,5 @@
 #include "Entity.h"
 
-namespace
-{
-	void CopyComponent(Component *newComp, const Component *cpyComp)
-	{
-		switch (newComp->GetType())
-		{
-		case SPRITE:
-			*static_cast<Sprite *>(newComp) = *static_cast<const Sprite *>(cpyComp);
-			break;
-		case TRANSFORM:
-			*static_cast<Transform *>(newComp) = *static_cast<const Transform *>(cpyComp);
-			break;
-		}
-	}
-}
 
 Entity::Entity() : components(NUM_COMPONENTS)
 {
@@ -39,39 +24,13 @@ Entity::~Entity()
 		}
 }
 
-Component *Entity::GetComponent(ComponentType type)
-{
-	return components[type];
-}
-
-Component *Entity::AddComponent(ComponentType type)
-{
-	if (components[type] == nullptr)
-	{
-		switch (type)
-		{
-		case SPRITE:
-			components[type] = new Sprite();
-			break;
-		case TRANSFORM:
-			components[type] = new Transform();
-			break;
-		}
-		components[type]->Owner = this;
-		return components[type];
-	}
-	else
-		return nullptr;
-}
-
 void Entity::operator=(const Entity &entity)
 {
-	for (unsigned i = 0; i < components.size(); i++)
+	for (int i = 0; i < components.size(); i++)
 	{
 		if (entity.components[i] != nullptr)
 		{
-			AddComponent(entity.components[i]->GetType());
-			CopyComponent(components[i], entity.components[i]);
+			components[i] = entity.components[i]->clone();
 			components[i]->Owner = this;
 		}
 	}

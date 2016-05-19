@@ -8,11 +8,13 @@
 class Sprite : public Component
 {
 	public:
-		Sprite() : Component(SPRITE), Color(1, 1, 1) {};
+		Sprite() : Component(SPRITE), mColor(1, 1, 1) {};
 
 		void Draw();
 		void Update() {};
 
-		Texture2D Texture;
-		Vector3 Color;
+		Component *clone();
+
+		Texture2D mTexture;
+		Vector3 mColor;
 };

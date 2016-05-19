@@ -9,6 +9,11 @@ extern Renderer *renderer;
 
 void Sprite::Draw()
 {
-	Transform *trans = static_cast<Transform *>(Owner->GetComponent(TRANSFORM));
-	renderer->DrawSprite(Texture, trans->GetPosition(), trans->GetScale(), trans->GetRotation(), Color);
+	Transform *trans = Owner->GetComponent<Transform>(TRANSFORM);
+	renderer->DrawSprite(mTexture, trans->GetPosition(), trans->GetScale(), trans->GetRotation(), mColor);
+}
+
+Component *Sprite::clone()
+{
+	return new Sprite(*this);
 }
