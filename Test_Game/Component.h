@@ -18,6 +18,7 @@ class Component
 		Component(ComponentType type) { Type = type; }
 		virtual ~Component() { };
 		virtual void Update() = 0;
+		virtual Component *clone() = 0;
 	
 		ComponentType GetType() { return Type; }
 

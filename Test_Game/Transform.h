@@ -10,6 +10,7 @@ class Transform : public Component
 		Transform() : Component(TRANSFORM), changed(true) { };
 
 		void Update();
+		Component *clone();
 
 		Matrix4 GetModelMatrix() { return ModelMatrix; }
 

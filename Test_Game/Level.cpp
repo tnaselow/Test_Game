@@ -49,8 +49,8 @@ void Level::Init(const std::vector<std::vector<unsigned>> &tileData, unsigned lv
 
 				trans->SetPosition(Vector3(unitWidth * x, unitHeight * y));
 				trans->SetScale(Vector3(unitWidth, unitHeight));
-				sprite->Texture = ResourceManager::GetTexture("block_solid");
-				sprite->Color = Vector3(0.8f, 0.8f, 0.7f);
+				sprite->mTexture = ResourceManager::GetTexture("block_solid");
+				sprite->mColor = Vector3(0.8f, 0.8f, 0.7f);
 				Bricks.push_back(entity);
 			}
 			else if (tileData[y][x] > 1)
@@ -62,23 +62,23 @@ void Level::Init(const std::vector<std::vector<unsigned>> &tileData, unsigned lv
 				trans->SetPosition(Vector3(unitWidth * x, unitHeight * y));
 				trans->SetScale(Vector3(unitWidth, unitHeight));
 
-				sprite->Texture = ResourceManager::GetTexture("block");
+				sprite->mTexture = ResourceManager::GetTexture("block");
 				switch (tileData[y][x])
 				{
 				case 2:
-					sprite->Color = Vector3(0.2f, 0.6f, 1.0f);
+					sprite->mColor = Vector3(0.2f, 0.6f, 1.0f);
 					break;
 				case 3:
-					sprite->Color = Vector3(0.0f, 0.7f, 0.0f);
+					sprite->mColor = Vector3(0.0f, 0.7f, 0.0f);
 					break;
 				case 4:
-					sprite->Color = Vector3(0.8f, 0.8f, 0.4f);
+					sprite->mColor = Vector3(0.8f, 0.8f, 0.4f);
 					break;
 				case 5:
-					sprite->Color = Vector3(1.0f, 0.5f, 0.0f);
+					sprite->mColor = Vector3(1.0f, 0.5f, 0.0f);
 					break;
 				default:
-					sprite->Color = Vector3(1.0f, 1.0f, 1.0f);
+					sprite->mColor = Vector3(1.0f, 1.0f, 1.0f);
 					break;
 				}
 				Bricks.push_back(entity);

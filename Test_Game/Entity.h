@@ -15,7 +15,8 @@ class Entity
 		void Draw();
 
 		void operator=(const Entity &entity);
-		Component *AddComponent(ComponentType type);
+		//Component *AddComponent(ComponentType type);
+		//Component *GetComponent(ComponentType type);
 		
 		template <typename T>
 		T *AddComponent(ComponentType type) 
@@ -33,7 +34,6 @@ class Entity
 		template <typename T>
 		T *GetComponent(ComponentType type) { return static_cast<T *>(components[type]); }
 
-		Component *GetComponent(ComponentType type);
 
 
 	private:
