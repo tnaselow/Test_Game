@@ -7,29 +7,29 @@
 class Transform : public Component
 {
 	public:
-		Transform() : Component(TRANSFORM), changed(true) { };
+		Transform() : Component(TRANSFORM), mChanged(true) { };
 
-		void Update();
+		void update();
 		Component *clone();
 
-		Matrix4 GetModelMatrix() { return ModelMatrix; }
+		Matrix4 getModelMatrix() { return mModelMatrix; }
 
-		void SetPosition(Vector3 vec);
-		void SetScale(Vector3 vec);
-		void SetRotation(float rot);
+		void setPosition(Vector3 vec);
+		void setScale(Vector3 vec);
+		void setRotation(float rot);
 
-		Vector3 GetPosition() { return Position; }
-		Vector3 GetScale() { return Scale; }
-		float GetRotation() { return Rotation; }
+		Vector3 getPosition() { return mPosition; }
+		Vector3 getScale() { return mScale; }
+		float getRotation() { return mRotation; }
 
 	
 	private:
-		Vector3 Position;
-		Vector3 Scale;
-		float Rotation;
+		Vector3 mPosition;
+		Vector3 mScale;
+		float mRotation;
 
-		Matrix4 ModelMatrix;
+		Matrix4 mModelMatrix;
 		
-		bool changed;
+		bool mChanged;
 		
 };

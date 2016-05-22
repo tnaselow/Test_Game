@@ -15,17 +15,17 @@ class Component
 {
 	public:
 
-		Component(ComponentType type) { Type = type; }
+		Component(ComponentType type) { mType = type; }
 		virtual ~Component() { };
-		virtual void Update() = 0;
+		virtual void update() = 0;
 		virtual Component *clone() = 0;
 	
-		ComponentType GetType() { return Type; }
+		ComponentType GetType() { return mType; }
 
-		Entity *Owner;
+		Entity *mOwner;
 	
 	private:
-		ComponentType Type;
+		ComponentType mType;
 };
 
 #include "Sprite.h"

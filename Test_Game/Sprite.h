@@ -10,8 +10,8 @@ class Sprite : public Component
 	public:
 		Sprite() : Component(SPRITE), mColor(1, 1, 1) {};
 
-		void Draw();
-		void Update() {};
+		void draw();
+		void update() {};
 
 		Component *clone();
 

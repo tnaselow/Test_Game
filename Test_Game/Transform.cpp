@@ -6,32 +6,32 @@ Component *Transform::clone()
 	return new Transform(*this);
 }
 
-void Transform::SetPosition(Vector3 vec)
+void Transform::setPosition(Vector3 vec)
 {
-	Position = vec;
-	changed = true;
+	mPosition = vec;
+	mChanged = true;
 }
 
-void Transform::SetScale(Vector3 vec)
+void Transform::setScale(Vector3 vec)
 {
-	Scale = vec;
-	changed = true;
+	mScale = vec;
+	mChanged = true;
 }
 
-void Transform::SetRotation(float rot)
+void Transform::setRotation(float rot)
 {
-	Rotation = rot;
-	changed = true;
+	mRotation = rot;
+	mChanged = true;
 }
 
-void Transform::Update()
+void Transform::update()
 {
-	if (changed)
+	if (mChanged)
 	{
 
-		ModelMatrix = Matrix4().Translate(Position) * Matrix4().RotateDeg(Rotation) 
-					* Matrix4().Scale(Scale.X, AXIS::X_AXIS) * Matrix4().Scale(Scale.Y, AXIS::Y_AXIS);
+		mModelMatrix = Matrix4().Translate(mPosition) * Matrix4().RotateDeg(mRotation) 
+					* Matrix4().Scale(mScale.X, AXIS::X_AXIS) * Matrix4().Scale(mScale.Y, AXIS::Y_AXIS);
 
-		changed = false;
+		mChanged = false;
 	}
 }

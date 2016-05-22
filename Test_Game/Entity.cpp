@@ -1,53 +1,53 @@
 #include "Entity.h"
 
 
-Entity::Entity() : components(NUM_COMPONENTS)
+Entity::Entity() : mComponents(NUM_COMPONENTS)
 {
-	for (unsigned i = 0; i < components.size(); i++)
-		components[i] = nullptr;
+	for (unsigned i = 0; i < mComponents.size(); i++)
+		mComponents[i] = nullptr;
 }
 
-Entity::Entity(const Entity &entity) : components(NUM_COMPONENTS)
+Entity::Entity(const Entity &entity) : mComponents(NUM_COMPONENTS)
 {
-	for (unsigned i = 0; i < components.size(); i++)
-		components[i] = nullptr;
+	for (unsigned i = 0; i < mComponents.size(); i++)
+		mComponents[i] = nullptr;
 	*this = entity;
 }
 
 Entity::~Entity()
 {
-	for (unsigned i = 0; i < components.size(); i++)
-		if (components[i] != nullptr)
+	for (unsigned i = 0; i < mComponents.size(); i++)
+		if (mComponents[i] != nullptr)
 		{
-			delete components[i];
-			components[i] = nullptr;
+			delete mComponents[i];
+			mComponents[i] = nullptr;
 		}
 }
 
 void Entity::operator=(const Entity &entity)
 {
-	for (int i = 0; i < components.size(); i++)
+	for (int i = 0; i < mComponents.size(); i++)
 	{
-		if (entity.components[i] != nullptr)
+		if (entity.mComponents[i] != nullptr)
 		{
-			components[i] = entity.components[i]->clone();
-			components[i]->Owner = this;
+			mComponents[i] = entity.mComponents[i]->clone();
+			mComponents[i]->mOwner = this;
 		}
 	}
 }
 
-void Entity::Update()
+void Entity::update()
 {
-	for (unsigned i = 0; i < components.size(); i++)
-		if (components[i] != nullptr)
-			components[i]->Update();
+	for (unsigned i = 0; i < mComponents.size(); i++)
+		if (mComponents[i] != nullptr)
+			mComponents[i]->update();
 }
 
-void Entity::Draw()
+void Entity::draw()
 {
-	if (components[SPRITE] != nullptr)
+	if (mComponents[SPRITE] != nullptr)
 	{
-		Sprite *sprite = static_cast<Sprite *>(components[SPRITE]);
-		sprite->Draw();
+		Sprite *sprite = static_cast<Sprite *>(mComponents[SPRITE]);
+		sprite->draw();
 	}
 }

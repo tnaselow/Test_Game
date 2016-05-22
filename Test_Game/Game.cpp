@@ -37,14 +37,14 @@ void Game::Init()
 
 	Entity entity;
 	Transform *trans = entity.AddComponent<Transform>(TRANSFORM);
-	trans->SetPosition(Vector3(0, 0));
-	trans->SetScale(Vector3(100, 100));
+	trans->setPosition(Vector3(0, 0));
+	trans->setScale(Vector3(100, 100));
 	Sprite *sprite = entity.AddComponent<Sprite>(SPRITE);
 	sprite->mTexture = ResourceManager::GetTexture("block");
 
 	gEntities.push_back(entity);
 
-	trans->SetPosition(Vector3(300, 100));
+	trans->setPosition(Vector3(300, 100));
 	sprite->mTexture = ResourceManager::GetTexture("block_solid");
 
 	gEntities.push_back(entity);

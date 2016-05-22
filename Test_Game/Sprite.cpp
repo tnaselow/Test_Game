@@ -7,10 +7,10 @@
 // very temporary
 extern Renderer *renderer;
 
-void Sprite::Draw()
+void Sprite::draw()
 {
-	Transform *trans = Owner->GetComponent<Transform>(TRANSFORM);
-	renderer->DrawSprite(mTexture, trans->GetPosition(), trans->GetScale(), trans->GetRotation(), mColor);
+	Transform *trans = mOwner->GetComponent<Transform>(TRANSFORM);
+	renderer->DrawSprite(mTexture, trans->getPosition(), trans->getScale(), trans->getRotation(), mColor);
 }
 
 Component *Sprite::clone()

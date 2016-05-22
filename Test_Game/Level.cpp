@@ -47,8 +47,8 @@ void Level::Init(const std::vector<std::vector<unsigned>> &tileData, unsigned lv
 				Transform *trans = entity.AddComponent<Transform>(TRANSFORM);
 				Sprite *sprite = entity.AddComponent<Sprite>(SPRITE);
 
-				trans->SetPosition(Vector3(unitWidth * x, unitHeight * y));
-				trans->SetScale(Vector3(unitWidth, unitHeight));
+				trans->setPosition(Vector3(unitWidth * x, unitHeight * y));
+				trans->setScale(Vector3(unitWidth, unitHeight));
 				sprite->mTexture = ResourceManager::GetTexture("block_solid");
 				sprite->mColor = Vector3(0.8f, 0.8f, 0.7f);
 				Bricks.push_back(entity);
@@ -59,8 +59,8 @@ void Level::Init(const std::vector<std::vector<unsigned>> &tileData, unsigned lv
 				Transform *trans = entity.AddComponent<Transform>(TRANSFORM);
 				Sprite *sprite = entity.AddComponent<Sprite>(SPRITE);
 
-				trans->SetPosition(Vector3(unitWidth * x, unitHeight * y));
-				trans->SetScale(Vector3(unitWidth, unitHeight));
+				trans->setPosition(Vector3(unitWidth * x, unitHeight * y));
+				trans->setScale(Vector3(unitWidth, unitHeight));
 
 				sprite->mTexture = ResourceManager::GetTexture("block");
 				switch (tileData[y][x])
@@ -90,7 +90,7 @@ void Level::Init(const std::vector<std::vector<unsigned>> &tileData, unsigned lv
 void Level::Draw(Renderer renderer)
 {
 	for (unsigned i = 0; i < Bricks.size(); i++)
-		Bricks[i].Draw();
+		Bricks[i].draw();
 };
 
 bool Level::IsCompleted()
