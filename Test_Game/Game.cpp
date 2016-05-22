@@ -36,10 +36,10 @@ void Game::Init()
 	level.Load("../levels/level_one.lvl", 800, 300);
 
 	Entity entity;
-	Transform *trans = entity.AddComponent<Transform>(TRANSFORM);
+	Transform *trans = entity.AddComponent<Transform>(COMPONENT_TRANSFORM);
 	trans->setPosition(Vector3(0, 0));
 	trans->setScale(Vector3(100, 100));
-	Sprite *sprite = entity.AddComponent<Sprite>(SPRITE);
+	Sprite *sprite = entity.AddComponent<Sprite>(COMPONENT_SPRITE);
 	sprite->mTexture = ResourceManager::GetTexture("block");
 
 	gEntities.push_back(entity);

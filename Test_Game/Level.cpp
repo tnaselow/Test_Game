@@ -44,8 +44,8 @@ void Level::Init(const std::vector<std::vector<unsigned>> &tileData, unsigned lv
 			if (tileData[y][x] == 1)
 			{
 				Entity entity;
-				Transform *trans = entity.AddComponent<Transform>(TRANSFORM);
-				Sprite *sprite = entity.AddComponent<Sprite>(SPRITE);
+				Transform *trans = entity.AddComponent<Transform>(COMPONENT_TRANSFORM);
+				Sprite *sprite = entity.AddComponent<Sprite>(COMPONENT_SPRITE);
 
 				trans->setPosition(Vector3(unitWidth * x, unitHeight * y));
 				trans->setScale(Vector3(unitWidth, unitHeight));
@@ -56,8 +56,8 @@ void Level::Init(const std::vector<std::vector<unsigned>> &tileData, unsigned lv
 			else if (tileData[y][x] > 1)
 			{
 				Entity entity;
-				Transform *trans = entity.AddComponent<Transform>(TRANSFORM);
-				Sprite *sprite = entity.AddComponent<Sprite>(SPRITE);
+				Transform *trans = entity.AddComponent<Transform>(COMPONENT_TRANSFORM);
+				Sprite *sprite = entity.AddComponent<Sprite>(COMPONENT_SPRITE);
 
 				trans->setPosition(Vector3(unitWidth * x, unitHeight * y));
 				trans->setScale(Vector3(unitWidth, unitHeight));

@@ -7,7 +7,7 @@
 class Transform : public Component
 {
 	public:
-		Transform() : Component(TRANSFORM), mChanged(true) { };
+		Transform() : Component(COMPONENT_TRANSFORM), mChanged(true) { };
 
 		void update();
 		Component *clone();

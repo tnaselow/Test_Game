@@ -9,7 +9,7 @@ extern Renderer *renderer;
 
 void Sprite::draw()
 {
-	Transform *trans = mOwner->GetComponent<Transform>(TRANSFORM);
+	Transform *trans = mOwner->GetComponent<Transform>(COMPONENT_TRANSFORM);
 	renderer->DrawSprite(mTexture, trans->getPosition(), trans->getScale(), trans->getRotation(), mColor);
 }
 

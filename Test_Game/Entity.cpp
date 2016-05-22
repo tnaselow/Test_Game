@@ -1,13 +1,13 @@
 #include "Entity.h"
 
 
-Entity::Entity() : mComponents(NUM_COMPONENTS)
+Entity::Entity() : mComponents(COMPONENT_NUM_COMPONENTS)
 {
 	for (unsigned i = 0; i < mComponents.size(); i++)
 		mComponents[i] = nullptr;
 }
 
-Entity::Entity(const Entity &entity) : mComponents(NUM_COMPONENTS)
+Entity::Entity(const Entity &entity) : mComponents(COMPONENT_NUM_COMPONENTS)
 {
 	for (unsigned i = 0; i < mComponents.size(); i++)
 		mComponents[i] = nullptr;
@@ -26,7 +26,7 @@ Entity::~Entity()
 
 void Entity::operator=(const Entity &entity)
 {
-	for (int i = 0; i < mComponents.size(); i++)
+	for (unsigned i = 0; i < mComponents.size(); i++)
 	{
 		if (entity.mComponents[i] != nullptr)
 		{
@@ -45,9 +45,9 @@ void Entity::update()
 
 void Entity::draw()
 {
-	if (mComponents[SPRITE] != nullptr)
+	if (mComponents[COMPONENT_SPRITE] != nullptr)
 	{
-		Sprite *sprite = static_cast<Sprite *>(mComponents[SPRITE]);
+		Sprite *sprite = static_cast<Sprite *>(mComponents[COMPONENT_SPRITE]);
 		sprite->draw();
 	}
 }

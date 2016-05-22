@@ -8,7 +8,7 @@
 class Sprite : public Component
 {
 	public:
-		Sprite() : Component(SPRITE), mColor(1, 1, 1) {};
+		Sprite() : Component(COMPONENT_SPRITE), mColor(1, 1, 1) {};
 
 		void draw();
 		void update() {};
