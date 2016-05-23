@@ -1,5 +1,5 @@
 #include "Renderer.h"
-
+#include "Zia\Math.h"
 
 Renderer::Renderer(const Shader &shader)
 {
@@ -12,18 +12,19 @@ Renderer::Renderer(const Shader &shader)
 	initRenderData();
 }
 
-void Renderer::DrawSprite(Texture2D &texture, Vector3 position, Vector3 size, float rotation, Vector3 color)
+
+
+void Renderer::DrawSprite(Texture2D &texture, Vec2 position, Vec2 size, float rotation, Vec3 color)
 {
 	this->shader.Use();
-	Matrix4 model, translate, rotate, scale;
-	translate.Translate(position);
-	rotate.RotateDeg(rotation);
-	scale.Scale(size.X, AXIS::X_AXIS);
-	scale.Scale(size.Y, AXIS::Y_AXIS);
+	Mat3 model;
+	model.scale(size);
+	model.rotateDeg(rotation);
+	model.translate(position);
+	
+	Mat4 mat4Model(model);
 
-	model = translate * rotate * scale;
-
-	this->shader.SetMatrix4("model", model);
+	this->shader.SetMatrix4("model", mat4Model);
 	this->shader.SetVector3f("spriteColor", color);
 
 	glActiveTexture(GL_TEXTURE0);
@@ -33,6 +34,29 @@ void Renderer::DrawSprite(Texture2D &texture, Vector3 position, Vector3 size, fl
 	glDrawArrays(GL_TRIANGLES, 0, 6);
 	glBindVertexArray(0);
 }
+
+
+//void Renderer::DrawSprite(Texture2D &texture, Vec2 position, Vec2 size, float rotation, Vec3 color)
+//{
+//	this->shader.Use();
+//	Mat4 model, translate, rotate, scale;
+//	translate.Translate(position);
+//	rotate.RotateDeg(rotation);
+//	scale.Scale(size.X, AXIS::X_AXIS);
+//	scale.Scale(size.Y, AXIS::Y_AXIS);
+//
+//	model = translate * rotate * scale;
+//
+//	this->shader.SetMatrix4("model", model);
+//	this->shader.SetVector3f("spriteColor", color);
+//
+//	glActiveTexture(GL_TEXTURE0);
+//	texture.Bind();
+//
+//	glBindVertexArray(this->quadVAO);
+//	glDrawArrays(GL_TRIANGLES, 0, 6);
+//	glBindVertexArray(0);
+//}
 
 void Renderer::initRenderData()
 {

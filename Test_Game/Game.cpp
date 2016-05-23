@@ -29,22 +29,22 @@ void Game::Init()
 	renderer = new Renderer(ResourceManager::GetShader("default"));
 
 	ResourceManager::LoadTexture("smile", "../res/smile.png", true);
-	ResourceManager::LoadTexture("block", "../res/block.png", false);
-	ResourceManager::LoadTexture("block_solid", "../res/block_solid.png", false);
+	ResourceManager::LoadTexture("block", "../res/oneTile.png", true);
+	ResourceManager::LoadTexture("block_solid", "../res/oneTile.png", true);
 	ResourceManager::LoadTexture("background", "../res/background.jpg", false);
 
 	level.Load("../levels/level_one.lvl", 800, 300);
 
 	Entity entity;
 	Transform *trans = entity.AddComponent<Transform>(COMPONENT_TRANSFORM);
-	trans->setPosition(Vector3(0, 0));
-	trans->setScale(Vector3(100, 100));
+	trans->setPosition(Vec2(0, 0));
+	trans->setScale(Vec2(100, 100));
 	Sprite *sprite = entity.AddComponent<Sprite>(COMPONENT_SPRITE);
 	sprite->mTexture = ResourceManager::GetTexture("block");
 
 	gEntities.push_back(entity);
 
-	trans->setPosition(Vector3(300, 100));
+	trans->setPosition(Vec2(300, 100));
 	sprite->mTexture = ResourceManager::GetTexture("block_solid");
 
 	gEntities.push_back(entity);
@@ -63,7 +63,7 @@ void Game::Render()
 {
 	//for (int i = 0; i < gEntities.size(); i++)
 	//	gEntities[i].Draw();
-	renderer->DrawSprite(ResourceManager::GetTexture("background"), Vector3(0, 0), Vector3(800, 600));
+	renderer->DrawSprite(ResourceManager::GetTexture("background"), Vec2(0, 0), Vec2(800, 600));
 	level.Draw(*renderer);
 	//renderer->DrawSprite(ResourceManager::GetTexture("smile"), Vector3(400, 300), Vector3(400, 200));
 }

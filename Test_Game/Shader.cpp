@@ -63,6 +63,13 @@ void Shader::SetVector2f(const char *name, float x, float y, bool useShader)
 	glUniform2f(glGetUniformLocation(this->ID, name), x, y);
 }
 
+void Shader::SetVector2f(const char *name, const Vec2 &vec, bool useShader)
+{
+	if (useShader)
+		this->Use();
+	glUniform2f(glGetUniformLocation(this->ID, name), vec.X, vec.Y);
+}
+
 void Shader::SetVector3f(const char *name, float x, float y, float z, float useShader)
 {
 	if (useShader)
@@ -70,7 +77,7 @@ void Shader::SetVector3f(const char *name, float x, float y, float z, float useS
 	glUniform3f(glGetUniformLocation(this->ID, name), x, y, z);
 }
 
-void Shader::SetVector3f(const char *name, const Vector3 &value, bool useShader)
+void Shader::SetVector3f(const char *name, const Vec3 &value, bool useShader)
 {
 	if (useShader)
 		this->Use();
@@ -84,7 +91,7 @@ void Shader::SetVector4f(const char *name, float x, float y, float z, float w, b
 	glUniform4f(glGetUniformLocation(this->ID, name), x, y, z, w);
 }
 
-void Shader::SetMatrix4(const char *name, Matrix4 &matrix, bool useShader)
+void Shader::SetMatrix4(const char *name, Mat4 &matrix, bool useShader)
 {
 	if (useShader)
 		this->Use();

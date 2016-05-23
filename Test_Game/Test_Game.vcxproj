@@ -95,7 +95,7 @@
       <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalLibraryDirectories>$(SolutionDir)\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>glew32s.lib;glfw3.lib;SOIL.lib;opengl32.lib;SapphMathD.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>ZiaD.lib;glew32s.lib;glfw3.lib;SOIL.lib;opengl32.lib;SapphMathD.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <EntryPointSymbol>mainCRTStartup</EntryPointSymbol>
     </Link>
   </ItemDefinitionGroup>

@@ -1,8 +1,8 @@
 #pragma once
 
 #include "Component.h"
-#include "Sapph\Vector3.h"
 #include "Texture2D.h"
+#include "Zia\Math.h"
 
 
 class Sprite : public Component
@@ -16,5 +16,5 @@ class Sprite : public Component
 		Component *clone();
 
 		Texture2D mTexture;
-		Vector3 mColor;
+		Vec3 mColor;
 };

@@ -1,8 +1,7 @@
 #pragma once
 
 #include "Component.h"
-#include "Sapph\Matrix4.h"
-#include "Sapph\Vector3.h"
+#include "Zia\Math.h"
 
 class Transform : public Component
 {
@@ -12,24 +11,23 @@ class Transform : public Component
 		void update();
 		Component *clone();
 
-		Matrix4 getModelMatrix() { return mModelMatrix; }
+		Mat4 getModelMatrix() { return mModelMatrix; }
 
-		void setPosition(Vector3 vec);
-		void setScale(Vector3 vec);
+		void setPosition(Vec2 vec);
+		void setScale(Vec2 vec);
 		void setRotation(float rot);
 
-		Vector3 getPosition() { return mPosition; }
-		Vector3 getScale() { return mScale; }
+		Vec2 getPosition() { return mPosition; }
+		Vec2 getScale() { return mScale; }
 		float getRotation() { return mRotation; }
 
 	
 	private:
-		Vector3 mPosition;
-		Vector3 mScale;
+		Vec2 mPosition;
+		Vec2 mScale;
 		float mRotation;
 
-		Matrix4 mModelMatrix;
+		Mat4 mModelMatrix;
 		
 		bool mChanged;
-		
 };

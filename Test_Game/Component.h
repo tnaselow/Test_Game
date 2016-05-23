@@ -11,6 +11,12 @@ enum ComponentType
 
 class Entity;
 
+// REQUIREMENT TO INHERIT THIS CLASS!!
+// - clone function
+// - update function
+// - calls Components constructor with its type
+
+
 class Component
 {
 	public:
