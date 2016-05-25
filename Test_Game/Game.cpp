@@ -30,7 +30,7 @@ void Game::Init()
 
 	ResourceManager::LoadTexture("smile", "../res/smile.png", true);
 	ResourceManager::LoadTexture("block", "../res/oneTile.png", true);
-	ResourceManager::LoadTexture("block_solid", "../res/oneTile.png", true);
+	ResourceManager::LoadTexture("block_solid", "../res/grass2.png", true);
 	ResourceManager::LoadTexture("background", "../res/background.jpg", false);
 
 	level.Load("../levels/level_one.lvl", 800, 300);

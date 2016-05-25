@@ -54,7 +54,7 @@ void Level::Init(const std::vector<std::vector<unsigned>> &tileData, unsigned lv
 				Sprite *sprite = entity.AddComponent<Sprite>(COMPONENT_SPRITE);
 
 				trans->setPosition(Vec2(unitWidth * x + offset, 32 * y));
-				trans->setScale(Vec2(unitWidth, unitHeight));
+				trans->setScale(Vec2(unitWidth, unitHeight / 2));
 				sprite->mTexture = ResourceManager::GetTexture("block_solid");
 				sprite->mColor = Vec3(0.8f, 0.8f, 0.7f);
 				Bricks.push_back(entity);
